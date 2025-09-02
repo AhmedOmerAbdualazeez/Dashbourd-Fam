@@ -1,0 +1,979 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: wheat;
+}
+
+.Contener {
+    position: relative;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "nav sec sec sec sec sec sec sec said said ";
+}
+
+@media (max-width: 420px ) {
+    .Contener {
+        width: fit-content;
+    } 
+    .nav .list {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav .list ul li {
+        padding: 5px 1px;
+    }
+    
+    .nav .list ul li a {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 680px ) {
+    .nav {
+        gap: 10px;
+        padding-top: 10px;
+    }
+    .nav .list {
+        margin-top: -40px;
+    }
+
+    .nav .list ul li {
+        padding: 10px;
+    }
+
+    .Said {
+       width: 100%;
+    }  
+}
+
+@media (max-width: 950px ) {
+    .Contener {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }    
+
+    .nav {
+        width: 100%;
+        background-color: white;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        height: auto;
+    }
+    
+    .nav .list ul {
+        list-style: none;
+        font-size: 20px;
+        padding: 0px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav .list li {
+        margin: 5px;
+    }
+    
+    .nav .list li:hover a::after {
+        height: 40%;
+        height: 155%;
+    }
+
+    .nav .list li:hover a {
+        /* color: white; */
+    }
+
+    .nav .list li a {
+        position: relative;
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 1;
+    }
+    
+    .nav .list li a::after {
+        position: absolute;
+        content: "";
+        width: 125%;
+        height: 0%;
+        left: -10px;
+        border-radius: 10px;
+        bottom: -7px;
+        background-color: wheat;
+        z-index: -1;
+        transition: 0.3s;
+    }
+
+    .nav .list li a i{
+        display: none;
+    }
+
+    .sec .Task {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    }
+
+    .sec {
+        background-color: wheat;
+        width: 100%;
+        margin: 25px 0;
+    }
+
+    .Said .title {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 80px;
+        width: 100%;
+    }
+
+    .Said .cont {
+        width: 90%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Said .cont .time {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    .Said .time_cal {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+    }
+
+    /* .Said .cal1, .Said .time .cont {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    } */
+
+    .Said .cal1, .Said .cal2 {
+        width: 87%;
+        display: flex;
+        gap: 30px;
+        padding: 0 15px;
+        justify-content: center;
+    }
+}
+
+/* navigationpar */
+
+
+
+@media (min-width: 951px ) {
+    .nav {
+        width: 80px;
+        background-color: white;
+        border-bottom-right-radius: 30px;
+        border-top-right-radius: 30px;
+        height: 100vh;
+        grid-area: nav;
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 1fr;
+        justify-content: left;
+        align-content: center;
+        padding: 15px;
+        transition: 0.3s;
+    }
+
+    .nav:hover {
+        width: 200px;
+        background-color: white;
+        border-bottom-right-radius: 30px;
+        border-top-right-radius: 30px;
+        height: 100vh;
+        grid-area: nav;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding: 10px;
+        transition: 0.3s;
+    }
+
+    .nav:hover .Gotask {
+        display: flex;
+        align-items: center;
+        margin-bottom: 45px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .nav:hover .Gotask img {
+        display: none;
+    }
+
+    .nav:hover .Gotask h3 {
+        display: block;
+        font-size: 25px;
+        font-weight: bolder;
+    }
+
+    .nav:hover .pro_data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav:hover .pro_data .img {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 0 0 0;
+    }
+
+    .nav:hover .pro_data .img img {
+        width: 90px;
+        border-radius: 50px;
+        padding: 2px;
+        outline: 2px solid rgb(92 174 195);
+        margin-bottom: 20px;
+        filter: drop-shadow(0 3px 6px black);
+    }
+
+    .nav:hover .pro_data .text {
+        display: block;
+        text-align: center;
+        margin-top: -8px;
+        font-size: 14px;
+    }
+
+    .nav:hover .list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    .nav:hover .list a {
+        color: black;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .nav .list ul li:hover a {
+        margin-left: 10px;
+    }
+
+    .sec .Task {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .sec {
+        background-color: wheat;
+        grid-area: sec;
+        height: 100vh;
+        width: 100%;
+        margin: 0 -10px;
+    }
+
+    .Said .time .cont-3 .cal2 {
+        display: none;
+    }
+}
+
+.nav .list .icon i {
+    display: none;
+}
+
+.Gotask {
+    display: block;
+    transition: 0.3s;
+}
+
+.nav .Gotask img {
+    width: 75px;
+    transition: 0.3s;
+}
+
+.Gotask h3 {
+    display: none;
+    transition: 0.3s;
+}
+
+.pro_data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    
+}
+
+.pro_data .img {
+    display: none;
+    transition: 0.3s;
+}
+
+.pro_data .img span {
+    background-color: rgb(92 174 195);
+    font-size: 12px;
+    color: #ffffffd1;
+    font-weight: bold;
+    border-radius: 50px;
+    position: absolute;
+    width: 50px;
+    text-align: center;
+    box-shadow: 0 0 2px 0 black;
+    padding: 2px 0;
+    bottom: 10px;
+}
+
+.pro_data .img span i {
+    margin-right: 4px;
+}
+.pro_data .img img {
+    width: 50px;
+    border-radius: 50px;
+    padding: 2px;
+    outline: 2px solid rgb(92 174 195);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 3px 6px black);
+    transition: 0.3s;
+}
+
+.pro_data .text {
+    display: none;
+    transition: 0.3s;
+}
+
+.pro_data .text p:first-child {
+    font-weight: bold;
+}
+
+.pro_data .text p:last-child {
+    color: #777;
+    margin-top: -15px;
+}
+
+.nav .list {
+    display: flex;
+    transition: 0.3s;
+}
+
+.nav .list ul {
+    list-style: none;
+    font-size: 20px;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.nav .list li {
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.nav .list i {
+    font-size: 18px;
+    color: #de9487;
+    margin-right: 18px;
+}
+
+.nav .list a {
+    color:  rgba(0, 0, 0, 0);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Saidbar */
+.Said {
+    position: relative;
+    grid-area: said;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.Said .title {
+    display: flex;
+    align-items: center;
+    gap: 65px;
+}
+
+.Said .title h4 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Said .title i {
+    position: relative;
+    background-color: wheat;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.Said .title i::after {
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    top: 0;
+    right: 0;
+    border-radius: 50px;
+    transform: translate(-8px, 6px);
+}
+
+.Said .time_cal {
+    display: flex;
+    align-items: center;
+    gap: 95px;
+    
+}
+
+
+.Said .time_cal>p {
+    color: #777;
+}
+
+.Said .time_cal .active {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.Said .time_cal .active .span1,
+.Said .time_cal .active .span2,
+.Said .time_cal .active .span3  {
+    width: 3px;
+    height: 3px;
+    background-color: black;
+    border-radius: 50px;
+}
+
+
+
+.Said .cal1,
+.Said .cal2 {
+    display: flex;
+    gap: 30px;
+    padding: 0 15px;
+}
+
+.Said .cal1:hover,
+.Said .cal2:hover {
+    background-color: rgb(253, 244, 226);
+    border-radius: 5px;
+}
+
+.Said .cal1> p,
+.Said .cal2> p{
+    font-weight: bold;
+}
+
+.Said .cal1 .data, 
+.Said .cal2 .data {
+    position: relative;
+    line-height: 1;
+    font-size: 14px;
+}
+
+.Said .cal1 .data::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 55%;
+    left: -20px;
+    top: 15px;
+    background-color: rgb(222, 148, 135);
+    border-radius: 50px;
+}
+
+.Said .cal1 .data p:first-child,
+.Said .cal2 .data p:first-child {
+    color: #777;
+}
+
+.Said .cal2 .data::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 55%;
+    left: -20px;
+    top: 15px;
+    background-color: rgb(92 174 195);
+    border-radius: 50px;
+}
+
+
+.sec .haed {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
+    gap: 10px;
+}
+
+.sec .haed .title {
+    line-height: 0.5;
+}
+
+.sec .haed .title h1 {
+    font-size: 22px;
+}
+
+.sec .haed .title p {
+    font-size: 16px;
+    color: #777;
+}
+
+.sec .haed .Saerch> i {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.sec .haed .Saerch> a {
+    background-color: black;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.sec .haed .Saerch> a i {
+    text-align: center;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.sec .nav_sec {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    justify-content: space-between;
+    gap: 10px;
+    width: 95%;
+    margin: -10px calc(5% / 2) 0;
+}
+
+.sec .nav_sec .Web {
+    background-color: rgb(16 202 183);
+}
+.sec .nav_sec .Mobile {
+    background-color: rgb(222, 148, 135);
+}
+.sec .nav_sec .Cyber {
+    background-color: rgb(92 174 195);
+}
+.sec .nav_sec .box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.sec .nav_sec .box .haed {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin: -5px 10px;
+}
+
+.sec .nav_sec .box .img {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sec .nav_sec .box .icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.sec .nav_sec .box .icon i {
+    font-size: 5px;
+    color: white;
+}
+
+.sec .nav_sec .box .img img:nth-child(2) {
+    position: relative;
+    right: 20px;
+}
+
+.sec .nav_sec .box  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    outline: 1px solid white;
+    padding: 1px;
+}
+
+.sec .nav_sec .box .img p {
+    background: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    outline: 1px solid white;
+    padding: 1px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    position: relative;
+    right: 40px;
+    font-size: 14px;
+}
+
+.sec .nav_sec .box .title h3 {
+    font-size: 22px;
+    line-height: 1.3;
+    margin: 10px 25px;
+    word-spacing: 10px;
+}
+
+.sec .nav_sec .box .title .degree {
+    margin: -10px 20px 10px;
+}
+.sec .nav_sec .box .title .degree p {
+    font-size: 15px;
+    color: #777;
+}
+
+.sec .nav_sec .box .title .degree div {
+    position: relative;
+    width: 100%;
+    background-color: #00000030;
+    height: 5px;
+    border-radius: 50px;
+}
+
+.sec .nav_sec .Mobile .title .degree div::after,
+.sec .nav_sec .Cyber .title .degree div::after,
+.sec .nav_sec .Web .title .degree div::after {
+    position: relative;
+}
+
+.sec .nav_sec .Mobile .title .degree div::after {
+    width: 49%;
+}
+
+.sec .nav_sec .Cyber .title .degree div::after {
+    width: 69%;
+}
+
+.sec .nav_sec .Web .title .degree div::after {
+    width: 89%;
+}
+
+.sec .nav_sec .Mobile .title .degree div::after,
+.sec .nav_sec .Cyber .title .degree div::after,
+.sec .nav_sec .Web .title .degree div::after {
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50px;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+/* Start Tasks */
+
+.sec .Task .task_day {
+    width: 100%;
+    height: 320px;
+    flex-grow: 1;
+    flex-basis: 100px;
+}
+
+.sec .Task .task_day .title,
+.sec .Task .Statistics .title {
+    font-size: 22px;
+    margin: -20px 20px;
+}
+.sec .Task .task_day .box div {
+    line-height: 0.8;
+}
+
+.sec .Task .task_day .box {
+    height: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 20px 15px 25px;
+    margin: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sec .Task .task_day .Mobile, 
+.sec .Task .task_day .Web,
+.sec .Task .task_day .UX {
+    position: relative;
+    transition: 0.3s;
+}
+
+.sec .Task .task_day .Mobile::after, 
+.sec .Task .task_day .Web::after,
+.sec .Task .task_day .UX::after {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+}
+ 
+.sec .Task .task_day .Mobile:hover {
+    box-shadow: 0 0 10px 0px rgb(16 202 183);
+}
+
+.sec .Task .task_day .UX:hover {
+    box-shadow: 0 0 10px 0px rgb(222, 148, 135);
+}
+
+.sec .Task .task_day .Web:hover {
+    box-shadow: 0 0 10px 0px rgb(92 174 195);
+}
+
+.sec .Task .task_day .Mobile::after {
+    background-color: rgb(16 202 183);
+}
+
+.sec .Task .task_day .UX::after {
+    background-color: rgb(222, 148, 135);
+}
+
+.sec .Task .task_day .Web::after {
+    background-color: rgb(92 174 195);
+}
+
+.sec .Task .task_day .box div p:first-child {
+    font-weight: bold;
+}
+
+.sec .Task .task_day .box div p:last-child {
+    color: #777;
+    font-size: 15px;
+}
+
+.sec .Task .task_day .box .icon label {
+    position: relative;
+    font-size: 14px;
+    color: white;
+    font-weight: bolder;
+}
+
+.sec .Task .task_day .box .icon label::after {
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    outline: 2px solid blue;
+    background-color: white;
+    padding: 2px;
+    z-index: 1;
+    border-radius: 50px;
+    transform: translate(-20px, -10px)
+}
+
+.sec .Task .task_day .Mobile .icon label::before {
+    color: rgb(16 202 183);
+}
+
+.sec .Task .task_day .Mobile .icon label::after {
+    outline-color: rgb(16 202 183);
+}
+
+.sec .Task .task_day .Mobile:hover .icon label::after,
+.sec .Task .task_day .Mobile .icon input[type="radio"]:checked + label::after {
+    box-shadow: 0 0 8px 4px rgb(16 202 183);
+}
+
+.sec .Task .task_day .UX .icon label::before {
+    color: rgb(222, 148, 135);
+}
+
+.sec .Task .task_day .UX .icon label::after {
+    outline-color: rgb(222, 148, 135);
+}
+
+.sec .Task .task_day .UX:hover .icon label::after,
+.sec .Task .task_day .UX .icon input[type="radio"]:checked + label::after {
+    box-shadow: 0 0 8px 4px rgb(222, 148, 135);
+}
+
+.sec .Task .task_day .Web .icon label::after {
+    outline-color: rgb(92 174 195);
+}
+
+.sec .Task .task_day .Web .icon label::before {
+    color: rgb(92 174 195);
+}
+
+.sec .Task .task_day .Web:hover .icon label::after,
+.sec .Task .task_day .Web .icon input[type="radio"]:checked + label::after {
+    box-shadow: 0 0 8px 4px rgb(92 174 195);
+}
+
+.sec .Task .task_day .box .icon input[type="radio"] {
+    display: none;
+}
+
+.sec .Task .task_day .box .icon input[type="radio"]:checked + label::before{
+/* .sec .Task .task_day .box .icon span::before  */
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    content: "\F587";
+    width: 17px;
+    height: 20px;
+    text-align: center;
+    place-content: center;
+    font-size: 18px;
+    z-index: 2;
+    transform: translate(-18px, -8px);
+    border-radius: 50px;
+}
+
+/* Step Statistics */
+.sec .Task .Statistics {
+    width: 100%;
+    flex-grow: 1;
+    flex-basis: 100px;
+    height: 300px;
+}
+
+.sec .Task .Statistics .timer {
+    display: flex;
+    width: 94%;
+    justify-content: space-around;
+    margin: calc(6% / 2);
+    align-items: center;
+    
+}
+
+.sec .Task .Statistics .timer .Box {
+    padding: 10px;
+    border-radius: 5px;
+    width: 25%;
+    height: 85px;
+    border: 2px dashed #00000073;
+}
+
+.sec .Task .Statistics .timer .Box i {
+    background-color: black;
+    border-radius: 50px;
+    padding: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+.sec .Task .Statistics .timer .Box p {
+    color: #777;
+    font-size: 14px;
+}
+.sec .Task .Statistics .timer .box {
+    background-color: white;
+    padding: 0px 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px -3px;
+}
+
+.sec .Task .Statistics .timer .box p:first-child {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 15px 0px -5px 0px;
+}
+
+.sec .Task .Statistics .timer .box p:last-child {
+    color: #777;
+    font-size: 16px;
+}
+
+.sec .Task .Statistics .degree {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 55px 15px;
+}
+
+.sec .Task .Statistics .degree .box {
+    background-color: white;
+    border-radius: 5px;
+    padding: 0 15px;
+    width: 33%;
+    box-shadow: 0 0 3px -2px;
+}
+
+.sec .Task .Statistics .degree .box p:nth-child(1) {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.sec .Task .Statistics .degree .box p:nth-child(2) {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.sec .Task .Statistics .degree .box p:nth-child(3) {
+    font-size: 14px;
+    color: #777;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.sec .Task .Statistics .degree img{}
+.sec .Task .Statistics {}
+.sec .Task {}
+
+
+
